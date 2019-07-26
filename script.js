@@ -1,9 +1,9 @@
 class Task {
     constructor(text) {
         this.text = text
+        this.isFinished = false
     }
 }
-
 class ToDoList {
     constructor() {
         this.tasks = []
@@ -20,12 +20,19 @@ class ToDoList {
         })
         document.body.appendChild(ul)
     }
-    addNewTaskToList(text) {
-        this.tasks.push(new Task(text))
+    addTaskToList(text) {
+        if (text == '' || text == null) {
+            alert("Add new task")
+        } else {
+            this.tasks.push(new Task(text))
+            console.log(this.tasks)
+        }
         this.render()
     }
+    createFormForAddingTask() {
+        const input = document.createElement('input')
+        const button = document.createElement('button')
+        button.innerText = 'Create new task'
 
+    }
 }
-
-const listForCleaning = new ToDoList()
-listForCleaning.addNewTaskToList('wynieś śmieci')
