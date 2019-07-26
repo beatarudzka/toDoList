@@ -33,6 +33,9 @@ class ToDoList {
         const input = document.createElement('input')
         const button = document.createElement('button')
         button.innerText = 'Create new task'
+        button.addEventListener('click', () => this.addTaskToList(input.value))
+        document.body.appendChild(input)
+        document.body.appendChild(button)
 
     }
 }
