@@ -6,8 +6,7 @@ class Task {
 
 class ToDoList {
     constructor() {
-        this.tasks = ["umyj gary", 'zamieć', 'umyj lodówkę']
-
+        this.tasks = []
         this.render()
     }
 
@@ -22,10 +21,11 @@ class ToDoList {
         document.body.appendChild(ul)
     }
     addNewTaskToList(text) {
-        this.tasks.push(newTask(text))
+        this.tasks.push(new Task(text))
         this.render()
     }
 
 }
 
 const listForCleaning = new ToDoList()
+listForCleaning.addNewTaskToList('wynieś śmieci')
