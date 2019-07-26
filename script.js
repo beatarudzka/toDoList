@@ -10,6 +10,7 @@ class ToDoList {
 
         this.render()
     }
+
     render() {
         document.body.innerHTML = ''
         const ul = document.createElement('ul')
@@ -19,6 +20,10 @@ class ToDoList {
             ul.appendChild.li
         })
         document.body.appendChild(ul)
+    }
+    addNewTaskToList(text) {
+        this.tasks.push(newTask(text))
+        this.render()
     }
 
 }
