@@ -10,5 +10,12 @@ class ToDoList {
 
         this.render()
     }
+    render() {
+        document.body.innerHTML = ''
+        const ul = document.createElement('ul')
+        document.body.appendChild(ul)
+    }
 
 }
+
+const listForCleaning = new ToDoList()
