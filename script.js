@@ -17,18 +17,19 @@ class ToDo {
     }
 
 
-    render() {
+    render(arrayToFind) {
         document.body.innerHTML = ''
-
+        const array = arrayToFind || this.tasks
         this.makeUI()
         const h1 = document.createElement('h1')
+
         h1.innerText = 'to do list'
         document.body.appendChild(h1)
 
 
         const ul = document.createElement('ul')
 
-        this.tasks.forEach((task, taskIndex) => {
+        array.forEach((task, taskIndex) => {
             const li = document.createElement('li')
             const button = document.createElement('button')
             li.innerText = task.text
