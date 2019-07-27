@@ -21,6 +21,10 @@ class ToDo {
         document.body.innerHTML = ''
 
         this.makeUI()
+        const h1 = document.createElement('h1')
+        h1.innerText = 'to do list'
+        document.body.appendChild(h1)
+
 
         const ul = document.createElement('ul')
 
@@ -78,6 +82,27 @@ class ToDo {
             'click',
             () => this.findTask(inputFindTask.value)
         )
+        const boxForButtons = document.createElement('div')
+
+
+        const buttonAllTasks = document.createElement('button')
+        buttonAllTasks.innerText = 'All'
+        const buttonCompletedTasks = document.createElement('button')
+        buttonCompletedTasks.innerText = 'Done'
+        const buttonTasksToDo = document.createElement('button')
+        buttonTasksToDo.innerText = 'To Do'
+
+        buttonAllTasks.style.marginBottom = '10px'
+        buttonCompletedTasks.style.marginBottom = '10px'
+        buttonTasksToDo.style.marginBottom = '10px'
+
+
+        boxForButtons.appendChild(buttonAllTasks)
+        boxForButtons.appendChild(buttonCompletedTasks)
+        boxForButtons.appendChild(buttonTasksToDo)
+        document.body.appendChild(boxForButtons)
+        document.body.appendChild(inputAddTask)
+        document.body.appendChild(buttonAddTask)
         document.body.appendChild(inputFindTask)
         document.body.appendChild(buttonFindTask)
 
