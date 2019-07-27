@@ -1,29 +1,74 @@
+class ToDo {
+    constructor() {
+        this.tasks = []
+
+        this.render()
+    }
+
+    addTask(text) {
+        this.tasks.push(new Task(text))
+
+        this.render()
+    }
+
+
+
+    render() {
+        document.body.innerHTML = ''
+
+        this.makeUI()
+
+        const ul = document.createElement('ul')
+
+        this.tasks.forEach((task, taskIndex) => {
+            const li = document.createElement('li')
+            const button = document.createElement('button')
+            li.innerText = task.text
+            button.innerText = 'x'
+
+            li.addEventListener('click', (e) => this.taskClickHandler(task))
+            button.addEventListener('click', (e) => this.taskDeleteClickHandler(e, taskIndex))
+
+            li.appendChild(button)
+            ul.appendChild(li)
+        })
+        document.body.appendChild(ul)
+
+    }
+
+    taskClickHandler(task) {
+        alert("completed")
+    }
+
+    taskDeleteClickHandler(e, taskIndex) {
+        e.stopPropagation()
+        this.tasks = this.tasks.slice(0, taskIndex).concat(this.tasks.slice(taskIndex + 1))
+        this.render()
+    }
+
+
+
+    makeUI() {
+        const inputAddTask = document.createElement('input')
+        const buttonAddTask = document.createElement('button')
+        buttonAddTask.innerText = 'Add task'
+
+        buttonAddTask.addEventListener(
+            'click',
+            () => this.addTask(inputAddTask.value)
+        )
+
+        document.body.appendChild(inputAddTask)
+        document.body.appendChild(buttonAddTask)
+    }
+}
+
+
+
 class Task {
     constructor(text) {
         this.text = text
-        this.isCompleted = false
-    }
-}
-class ToDoList {
-    constructor(selectedHtmlElement) {
-        this.tasks = []
-        this.selectedHtmlElement = selectedHtmlElement || document.body
-
     }
 }
 
-const input = document.querySelector('input');
-const ul = document.querySelector('ul');
-const liElements = document.querySelectorAll('li');
-
-const searchTask = (e) => {
-    const searchText = e.target.value.toLowerCase()
-    let tasks = [...liElements];
-    console.log(tasks);
-    tasks = tasks.filter(li => li.textContent.toLowerCase().includes(searchText))
-    console.log(tasks);
-    ul.textContent = "";
-    tasks.forEach(li => ul.appendChild(li))
-}
-
-input.addEventListener('input', searchTask)
+const toDo1 = new ToDo()
