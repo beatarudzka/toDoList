@@ -141,12 +141,12 @@
          task.completed ? (taskBox.style.textDecoration = "line-through") : (taskBox.style.textDecoration = "none")
      }
 
- }
- dateInLocalStorage() {
-     localStorage.setItem('toDo', `${JSON.stringify(this.tasks)}`)
- }
 
- }
+     dateInLocalStorage() {
+         localStorage.setItem('toDo', `${JSON.stringify(this.tasks)}`)
+     }
+
+
  }
 
 
